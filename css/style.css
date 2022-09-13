@@ -1,32 +1,183 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
 
-* { margin: 0; padding: 0; }
-html, body { height: 100%; }
-
-/*현재시간*/
-body {
+body{
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 50px;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 0 15px black;
-  background-repeat: no-repeat;
-  background-position: center center;
-  /* background-position: 50% 50%; */
-  /* background: linear-gradient(#D7D7D7, #FCFCFC); */
-  /* background-color: linear-gradient(#000000, #ffffff); */
-  /* background-color: #000; */
-  /* background-image: url('../img/background_04.jpg'); */
-  /* background-size: 100%; */
+  align-items: center;
+  min-height: 100vh;
+  background: #2f363e;
+}
+
+.header{
+  position: absolute;
+  width: 100%;
+  min-height: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+  /* background: red; */
+  top: 0;
+}
+.header .title {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding-top: 80px;
 
 }
 
-#clock {
-  font-family: 'Concert One', cursive;
+.header .title p {
+  display: inline-block;
+  color: #fff;
+  font-size: 45px;
+  line-height: 45px;
+  font-weight: bold;
+}
+
+.cube{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation-name: animate;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes animate {
+  0%
+  {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100%
+  {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.cube div span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#151515,#00ec00);
+  transform: rotateY(calc(90deg * var(--i)))translateZ(150px);
+  /*300/2=150*/
+}
+
+
+.top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #222;
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.top::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #0f0;
+  transform: translateZ(-400px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(0, 255, 0, 0.2),
+  0 0 200px rgba(0, 255, 0, 0.4),
+  0 0 300px rgba(0, 255, 0, 0.6),
+  0 0 400px rgba(0, 255, 0, 0.8),
+  0 0 500px rgba(0, 255, 0, 1);
+
+}
+
+#time{
+  display: flex;
+  gap:40px;
+  color: #fff;
+  margin-left: 100px;
+}
+
+#time .circle{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#time .circle svg{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+#time .circle svg circle{
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: #191919;
+  stroke-width: 4;
+  transform: translate(5px,5px);
+}
+#time .circle svg circle:nth-child(2){
+  stroke: var(--clr);
+  stroke-dasharray: 440;
+}
+
+#time div{
+  position: absolute;
   text-align: center;
-  opacity: 0.85;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+#time div span{
+  position: absolute;
+  transform: translateX(-50%) translateY(-1px);
+  font-size: 0.35em;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#time .ap{
+  position: relative;
+  font-size: 1em;
+  transform: translateX(-20px);
+}
+
+.dots{
+  position: absolute;
+  width: 100%;
+  height:100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+
+}
+
+.dots::before{
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 15px;
+  height: 15px;
+  background: var(--clr);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--clr),0 0 60px var(--clr)
 }
